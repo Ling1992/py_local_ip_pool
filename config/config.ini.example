@@ -1,0 +1,17 @@
+[local]
+mysql_host=127.0.0.1
+mysql_port=3306
+mysql_user=root
+mysql_password=
+mysql_db=
+
+
+[server]
+mysql_host=127.0.0.1
+mysql_port=3306
+mysql_user=root
+mysql_password=
+mysql_db=
+
+ssdb_host=127.0.0.1
+ssdb_port=8888
