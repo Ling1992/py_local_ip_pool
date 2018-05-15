@@ -1,17 +1,22 @@
 [local]
-mysql_host=127.0.0.1
-mysql_port=3306
-mysql_user=root
-mysql_password=
-mysql_db=
+ssdb_host=
+ssdb_port=
+
+check_url=
+
+# ssdb:local:ip:pool:project_name
+ssdb_queue_ip_pool=ssdb:local:ip:pool:{}
+
+# ssdb:local:ip:pool:black:list:project_name:1
+ssdb_kv_black_list=ssdb:local:ip:pool:black:list:{}:
+
+# ssdb:local:ip:pool:black:list:check:project_name:100
+ssdb_kv_black_list_check=ssdb:local:ip:pool:black:list:check:{}:
 
 
 [server]
-mysql_host=127.0.0.1
-mysql_port=3306
-mysql_user=root
+mysql_host=
+mysql_port=
+mysql_user=
 mysql_password=
 mysql_db=
-
-ssdb_host=127.0.0.1
-ssdb_port=8888
