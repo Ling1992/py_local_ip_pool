@@ -8,6 +8,7 @@ import requests
 import sys
 import threading
 from common import helper
+import json
 
 
 def pull_ips_thread():
@@ -40,8 +41,7 @@ def get_ip(page):
                 # 缓存两天
                 ssdb.setx(ssdb_kv_black_list.format(ip_id),
                           '{}://{}:{}'.format(ip_type, host, port), 60 * 60 * 24 * 2)
-                ssdb.qpush(ssdb_queue_ip_pool,
-                           '{}'.format({'id': ip_id, 'host': host, 'port': port, 'type': ip_type}))
+                ssdb.qpush(ssdb_queue_ip_pool, json.dumps({'id': ip_id, 'host': host, 'port': port, 'type': ip_type}))
     except Exception as e:
         raise e
     finally:
@@ -124,6 +124,8 @@ if __name__ == '__main__':
     # sql
     select_ips_sql = "SELECT id, host, port, type FROM collect_ips WHERE status = 1 LIMIT {}, {}"
     update_ip_sql = "UPDATE collect_ips SET status = 0 WHERE id = {}"
+
+    ping_sql = "SELECT * from collect_ips"
 
     page_size = 10
 
